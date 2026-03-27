@@ -1,10 +1,12 @@
 services:
   app:
+    build:
+      context: ./static_html
+      dockerfile: static.Dockerfile
     ports:
       - 8080:8000
       - 3000:8000
-    #image: python:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
+    #image: python:latest    
     command: python -m http.server 8000
+    volumes:
+      - ./static_html/src:/app
